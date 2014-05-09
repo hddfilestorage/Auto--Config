@@ -422,7 +422,7 @@ public class ModCreator {
 		chckbxServer_1.setSelected(true);
 		chckbxServer_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				client = convertBool(chckbxServer_1.isSelected());
+				server = convertBool(chckbxServer_1.isSelected());
 			}
 		});
 		GridBagConstraints gbc_chckbxServer_1 = new GridBagConstraints();
@@ -801,7 +801,7 @@ public class ModCreator {
 					if(!mr.getModId().version.isEmpty())
 						txtVersion.setText(mr.getModId().version);
 					if(!mr.getModId().url.isEmpty())
-						txtUrl.setText(mr.getModId().url);
+						txtWebsite.setText(mr.getModId().url);
 				}
 			}
 		});
