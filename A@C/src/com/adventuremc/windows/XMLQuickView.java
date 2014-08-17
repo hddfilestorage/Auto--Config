@@ -1,21 +1,18 @@
 package com.adventuremc.windows;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
-import javax.swing.JEditorPane;
-import javax.swing.JTextArea;
 import java.awt.CardLayout;
 
 public class XMLQuickView extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2567074608529505372L;
 	private final JPanel contentPanel = new JPanel();
 
 	/**

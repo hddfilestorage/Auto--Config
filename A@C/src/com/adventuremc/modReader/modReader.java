@@ -13,7 +13,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import com.adventuremc.elements.ModId;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -28,18 +27,15 @@ public class modReader {
 			target = tempFile();
 			unzipFile(f,target);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(target.length() == 0){
 			System.out.println("fail");
 		}
-		Gson g = new Gson();
 		InputStreamReader isr = null;
 		try {
 			isr = new InputStreamReader(new FileInputStream(target));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		JsonParser parser = new JsonParser();
@@ -69,6 +65,7 @@ public class modReader {
 		        break;
 		    }
 		}
+		zin.close();
     }
 	
 	public File tempFile() throws IOException{

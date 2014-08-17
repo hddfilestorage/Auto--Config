@@ -9,8 +9,6 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-
 import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
@@ -25,15 +23,11 @@ import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.JTabbedPane;
 
-import java.awt.GridLayout;
-
 import javax.swing.JTextPane;
 
 import com.adventuremc.elements.Mod;
 
 import java.awt.Color;
-import java.awt.SystemColor;
-
 import javax.swing.DefaultComboBoxModel;
 
 import com.adventuremc.elements.Mod.EBool;
@@ -46,7 +40,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JToolBar;
-import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
 import java.awt.Component;
@@ -197,7 +190,7 @@ public class ModCreator {
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		JLabel lblName = new JLabel("Name");
+		JLabel lblName = new JLabel("Name*");
 		GridBagConstraints gbc_lblName = new GridBagConstraints();
 		gbc_lblName.anchor = GridBagConstraints.EAST;
 		gbc_lblName.insets = new Insets(0, 0, 5, 5);
@@ -231,7 +224,7 @@ public class ModCreator {
 		panel_1.add(txtDescription, gbc_txtDescription);
 		txtDescription.setColumns(10);
 		
-		JLabel lblVersion = new JLabel("Version");
+		JLabel lblVersion = new JLabel("Version*");
 		GridBagConstraints gbc_lblVersion = new GridBagConstraints();
 		gbc_lblVersion.anchor = GridBagConstraints.EAST;
 		gbc_lblVersion.insets = new Insets(0, 0, 5, 5);
@@ -248,7 +241,7 @@ public class ModCreator {
 		panel_1.add(txtVersion, gbc_txtVersion);
 		txtVersion.setColumns(10);
 		
-		JLabel lblFileName = new JLabel("File Name");
+		JLabel lblFileName = new JLabel("File Name*");
 		GridBagConstraints gbc_lblFileName = new GridBagConstraints();
 		gbc_lblFileName.anchor = GridBagConstraints.EAST;
 		gbc_lblFileName.insets = new Insets(0, 0, 5, 5);
@@ -265,7 +258,7 @@ public class ModCreator {
 		panel_1.add(txtFile, gbc_txtFile);
 		txtFile.setColumns(10);
 		
-		JLabel lblWebsite = new JLabel("Website");
+		JLabel lblWebsite = new JLabel("Website*");
 		GridBagConstraints gbc_lblWebsite = new GridBagConstraints();
 		gbc_lblWebsite.anchor = GridBagConstraints.EAST;
 		gbc_lblWebsite.insets = new Insets(0, 0, 5, 5);
@@ -308,7 +301,7 @@ public class ModCreator {
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		JLabel lblType = new JLabel("Type");
+		JLabel lblType = new JLabel("Type*");
 		GridBagConstraints gbc_lblType = new GridBagConstraints();
 		gbc_lblType.anchor = GridBagConstraints.EAST;
 		gbc_lblType.insets = new Insets(0, 0, 5, 5);
@@ -371,7 +364,7 @@ public class ModCreator {
 		panel_2.add(txtMd, gbc_txtMd);
 		txtMd.setColumns(10);
 		
-		JLabel lblUrl = new JLabel("Url");
+		JLabel lblUrl = new JLabel("Url*");
 		GridBagConstraints gbc_lblUrl = new GridBagConstraints();
 		gbc_lblUrl.anchor = GridBagConstraints.EAST;
 		gbc_lblUrl.insets = new Insets(0, 0, 5, 5);
@@ -380,6 +373,7 @@ public class ModCreator {
 		panel_2.add(lblUrl, gbc_lblUrl);
 		
 		txtUrl = new JTextField();
+		txtUrl.setText("packs/Adventure/files/mods/");
 		GridBagConstraints gbc_txtUrl = new GridBagConstraints();
 		gbc_txtUrl.insets = new Insets(0, 0, 5, 0);
 		gbc_txtUrl.fill = GridBagConstraints.HORIZONTAL;
@@ -722,7 +716,7 @@ public class ModCreator {
 				comboBoxType.setSelectedIndex(2);
 				comboBoxDownload.setSelectedIndex(1);
 				txtMd.setText("");
-				txtUrl.setText("");
+				txtUrl.setText("packs/Adventure/files/mods/");
 				chckbxClient.setSelected(true);
 				chckbxServer.setSelected(false);
 				chckbxLibrary.setSelected(false);
@@ -753,7 +747,7 @@ public class ModCreator {
 					try {
 						fis = new FileInputStream(file);
 					} catch (FileNotFoundException e3) {
-						// TODO Auto-generated catch block
+						// // TODONE
 						e3.printStackTrace();
 					}
 					byte[] buffer = new byte[1024];
@@ -761,7 +755,7 @@ public class ModCreator {
 					try {
 						md = MessageDigest.getInstance("MD5");
 					} catch (NoSuchAlgorithmException e2) {
-						// TODO Auto-generated catch block
+						// // TODONE
 						e2.printStackTrace();
 					}
 					int numRead = 0;
@@ -770,7 +764,7 @@ public class ModCreator {
 						try {
 							numRead = fis.read(buffer);
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
+							// // TODONE
 							e1.printStackTrace();
 						}
 						if (numRead > 0) {
@@ -781,7 +775,7 @@ public class ModCreator {
 					try {
 						fis.close();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
+						// // TODONE
 						e1.printStackTrace();
 					}
 					byte[] b = md.digest();
@@ -793,6 +787,7 @@ public class ModCreator {
 					
 					txtMd.setText(result);
 					txtFile.setText(file.getName());
+					txtUrl.setText("packs/Adventure/files/mods/" + file.getName());
 					modReader mr = new modReader(file);
 					if(!mr.getModId().name.isEmpty())
 						txtName.setText(mr.getModId().name);
